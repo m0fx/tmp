@@ -5,21 +5,21 @@ duojuheAdmin version: <= v1.0.2 vulnerable to background SQL injection attacks, 
 
 Step 1:Locate `com.duojuhe.coremodule.form.service.impl.FormProjectResultServiceImpl#queryFormProjectResultPageResList` and discover this function SQL statements are spliced without any filtering.
 
-![2025-04-26 154408](.\src\img\2025-04-26 154408.png)
+![2025-04-26 154408](./src/img/2025-04-26 154408.png)
 
 
 
 Step 2:After joining together the SQL statements directly call `com.Duojuhe.Coremodule.Form.Mapper.FormProjectResultMapper#queryFormProjectResultPageResList` SQL query interfaces.
 
-![2025-04-26 162251](.\src\img\2025-04-26 162251.png)
+![2025-04-26 162251](./src/img/2025-04-26 162251.png)
 
-![2025-04-26 154903](.\src\img\2025-04-26 154903.png)
+![2025-04-26 154903](./src/img/2025-04-26 154903.png)
 
 
 
 Setp 3:The lookup function `com.Duojuhe.Coremodule.Form.Service.Impl.FormProjectResultServiceImpl#queryFormProjectResultPageResList` is referenced within the function `com.Duojuhe.Coremodule.Form.Controller.FormProjectResultController#queryFormProjectResultPageResList`. Additionally, the route request to `/sysAdmin/formProjectResult/queryFormProjectResultPageResList` is analyzed, with the request method being specified as `POST`.
 
-![2025-04-26 154010](.\src\img\2025-04-26 154010.png)
+![2025-04-26 154010](./src/img/2025-04-26 154010.png)
 
 
 
@@ -46,18 +46,18 @@ Connection: close
 
 1.Log in to an ordinary user to get a token.
 
-![2025-04-26 144221](.\src\img\2025-04-26 144221.png)
+![2025-04-26 144221](./src/img/2025-04-26 144221.png)
 
-![2025-04-26 144338](.\src\img\2025-04-26 144338.png)
+![2025-04-26 144338](./src/img/2025-04-26 144338.png)
 
 2.Replace token and send payload.
 
-![2025-04-26 144418](C:\Users\M0_Fx\Desktop\JavaCode\Doc\duojuheAdmin-v1.0.2\src\img\2025-04-26 144418.png)
+![2025-04-26 144418](./src/img/2025-04-26 144418.png)
 
-![2025-04-26 144517](.\src\img-bak\2025-04-26 144517.png)
+![2025-04-26 144517](./src/img-bak/2025-04-26 144517.png)
 
 3.Get the password clear text of the super administrator through the rainbow table and log in successfully.
 
-![2025-04-26 163147](.\src\img\2025-04-26 163147.png)
+![2025-04-26 163147](./src/img/2025-04-26 163147.png)
 
-![2025-04-26 163516](.\src\img\2025-04-26 163516.png)
+![2025-04-26 163516](./src/img/2025-04-26 163516.png)
